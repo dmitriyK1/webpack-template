@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import NpmInstallPlugin from 'npm-install-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import UnminifiedWebpackPlugin from 'unminified-webpack-plugin';
 
 const PATHS = {
   dev: path.join(__dirname, 'dev'),
@@ -127,12 +128,24 @@ var module = {
 const plugins = [
   new webpack.NoErrorsPlugin(),
   new webpack.HotModuleReplacementPlugin(),
+
   new NpmInstallPlugin({
     save: true,
     peerDependencies: true
   }),
+
   new ExtractTextPlugin('[name].css'),
-  new webpack.optimize.DedupePlugin()
+  new webpack.optimize.DedupePlugin(),
+
+  new webpack.optimize.UglifyJsPlugin({
+    minimize: true,
+    compress: {
+      warnings: false
+    }
+  }),
+
+  new UnminifiedWebpackPlugin()
+
 ];
 
 const config = {
