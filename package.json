@@ -1,5 +1,8 @@
 {
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "autoprefixer-loader": "^3.2.0",
+    "awesome-typescript-loader": "^0.17.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.9.0",
@@ -8,12 +11,29 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
-    "webpack": "^1.13.1"
+    "jade": "^1.11.0",
+    "jade-loader": "^0.8.0",
+    "json-loader": "^0.5.4",
+    "npm-install-webpack-plugin": "^4.0.0",
+    "postcss-loader": "^0.9.1",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.1.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
     "start": "webpack",
-    "watch": "webpack --watch"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "serve": "webpack-dev-server --hot --inline",
+    "deploy": "npm run build && surge"
   },
   "dependencies": {
     "babel-runtime": "^6.9.2"
