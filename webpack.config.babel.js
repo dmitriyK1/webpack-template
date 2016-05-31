@@ -20,7 +20,7 @@ const entry = {
 const output = {
   //path to where webpack will build your stuff
   path: PATHS.build,
-  filename: 'bundle.js'
+  filename: '[name].js'
 };
 
 // Faster development specific options, such as cheap-module-eval-source-map
