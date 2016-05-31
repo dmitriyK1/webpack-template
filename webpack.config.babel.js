@@ -97,6 +97,11 @@ const stylusLoader = {
   loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
 };
 
+const jadeLoader = {
+  test: /\.jade$/,
+  loader: 'jade-loader'
+};
+
 const postcss = () => [autoprefixer];
 
 var module = {
@@ -106,7 +111,8 @@ var module = {
     imagesLoader,
     cssLoader,
     stylusLoader,
-    coffeeLoader
+    coffeeLoader,
+    jadeLoader
   ]
 
 };
