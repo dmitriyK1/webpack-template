@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import NpmInstallPlugin from 'npm-install-webpack-plugin';
 import autoprefixer from 'autoprefixer';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const PATHS = {
   dev: path.join(__dirname, 'dev'),
@@ -89,12 +90,14 @@ const imagesLoader = {
 
 const cssLoader = {
   test: /\.css$/,
-  loader: 'style-loader!css-loader!postcss-loader'
+  // loader: 'style-loader!css-loader!postcss-loader',
+  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
 };
 
 const stylusLoader = {
   test: /\.styl$/,
-  loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
+  // loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
+  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!stylus-loader')
 };
 
 const jadeLoader = {
@@ -127,7 +130,9 @@ const plugins = [
   new NpmInstallPlugin({
     save: true,
     peerDependencies: true
-  })
+  }),
+  new ExtractTextPlugin('[name].css'),
+  new webpack.optimize.DedupePlugin()
 ];
 
 const config = {
@@ -139,7 +144,8 @@ const config = {
   debug,
   cache,
   devServer,
-  postcss
+  postcss,
+  plugins
 };
 
 export default config;
