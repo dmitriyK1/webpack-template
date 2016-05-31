@@ -36,6 +36,8 @@
     "deploy": "npm run build && surge"
   },
   "dependencies": {
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.9.0",
     "babel-runtime": "^6.9.2"
   }
 }
