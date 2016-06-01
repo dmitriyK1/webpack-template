@@ -141,7 +141,7 @@ const plugins = [
     peerDependencies: true
   }),
 
-  new ExtractTextPlugin('[name].css'),
+  new ExtractTextPlugin('[name].css', { allChunks: false }),
 
   // turn off for dev server
   // new webpack.optimize.DedupePlugin(),
