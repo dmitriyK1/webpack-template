@@ -5,7 +5,7 @@ import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import UnminifiedWebpackPlugin from 'unminified-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const PATHS = {
   dev: path.join(__dirname, 'dev'),
@@ -128,6 +128,12 @@ var module = {
 // ================================================================================
 
 const plugins = [
+  new CleanWebpackPlugin(['dist', 'build'], {
+    root: __dirname,
+    verbose: true,
+    dry: false
+  }),
+
   new webpack.NoErrorsPlugin(),
 
   new NpmInstallPlugin({
