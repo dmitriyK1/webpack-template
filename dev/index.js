@@ -5,8 +5,10 @@ console.log(component());
 require('./css/main.css');
 require('./stylus/main.styl');
 
+var div = document.createElement('div');
 var templateHtml = require('./jade/main.jade')();
-document.body.insertAdjacentHTML('beforeEnd', templateHtml);
+div.innerHTML = templateHtml;
+document.body.appendChild(div);
 
 async function sayHi() {
   return new Promise((resolve, reject) => {
@@ -20,3 +22,11 @@ async function speak() {
 }
 
 speak();
+
+if (module.hot) {
+  module.hot.accept();
+
+  module.hot.dispose(() => {
+    document.body.removeChild(div);
+  });
+}

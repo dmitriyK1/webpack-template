@@ -127,7 +127,6 @@ var module = {
 
 const plugins = [
   new webpack.NoErrorsPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
 
   new NpmInstallPlugin({
     save: true,
@@ -135,7 +134,9 @@ const plugins = [
   }),
 
   new ExtractTextPlugin('[name].css'),
-  new webpack.optimize.DedupePlugin(),
+
+  // turn off for dev server
+  // new webpack.optimize.DedupePlugin(),
 
   new webpack.optimize.UglifyJsPlugin({
     minimize: true,

@@ -1,7 +1,6 @@
 {
   "devDependencies": {
     "autoprefixer": "^6.3.6",
-    "autoprefixer-loader": "^3.2.0",
     "awesome-typescript-loader": "^0.17.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
@@ -33,7 +32,7 @@
     "start": "webpack",
     "build": "webpack",
     "watch": "webpack --watch",
-    "serve": "webpack-dev-server --hot --inline",
+    "serve": "webpack-dev-server --hot --inline --watch",
     "deploy": "npm run build && surge"
   },
   "dependencies": {
