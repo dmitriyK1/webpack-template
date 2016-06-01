@@ -4,6 +4,8 @@ import NpmInstallPlugin from 'npm-install-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import UnminifiedWebpackPlugin from 'unminified-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 
 const PATHS = {
   dev: path.join(__dirname, 'dev'),
@@ -145,8 +147,13 @@ const plugins = [
     }
   }),
 
-  new UnminifiedWebpackPlugin()
+  new UnminifiedWebpackPlugin(),
 
+  new webpack.optimize.OccurenceOrderPlugin(),
+
+  new HtmlWebpackPlugin({
+    template: PATHS.dev + '/index.html'
+  })
 ];
 
 const config = {
