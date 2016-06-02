@@ -6,6 +6,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import UnminifiedWebpackPlugin from 'unminified-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
+import ngAnnotatePlugin from 'ng-annotate-webpack-plugin';
 
 const PATHS = {
   dev: path.join(__dirname, 'dev'),
@@ -135,6 +136,10 @@ const plugins = [
   }),
 
   new webpack.NoErrorsPlugin(),
+
+  new ngAnnotatePlugin({
+    add: true
+  }),
 
   new NpmInstallPlugin({
     save: true,
