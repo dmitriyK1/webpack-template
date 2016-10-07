@@ -1,0 +1,9 @@
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - npm install --progress=false
+            - npm start
+            - npm test
+            # - npm run flow
